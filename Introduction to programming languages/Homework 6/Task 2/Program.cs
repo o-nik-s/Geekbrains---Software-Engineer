@@ -34,7 +34,7 @@ void Main()
             return;
         }
     (float, float) decision = Solver(koeff);
-    System.Console.WriteLine($"Решение уравнения: ({decision.Item1}, {decision.Item2})");
+    System.Console.WriteLine($"Пересечение прямых: ({decision.Item1}, {decision.Item2})");
 }
 
 Main();
