@@ -40,8 +40,7 @@ void CheckElementInArray(int [,] arr, (int row, int column) position)
     }
     else
     {
-        Console.WriteLine($"Такого элемента нет.");
-        
+        Console.WriteLine($"Такого элемента нет."); 
     }
 }
 
