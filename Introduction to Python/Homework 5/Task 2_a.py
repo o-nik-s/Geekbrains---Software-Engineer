@@ -19,11 +19,15 @@ def step_human(count, max_c):
 
 def step_pc(count, max_c):
     cnt = random.randint(1, max_c)
-    if cnt > count:
-        cnt = count
+    if cnt > count: cnt = count
     count -= cnt
     print(f'Ход ПК. ПК забрал {cnt} конфет. Осталось {count} конфет.')
     return count
+
+
+def result(flag:bool):
+    if flag: print(f'Победил ПК!')
+    else: print(f'Поздравляем с победой!')
 
 
 def main():
@@ -33,16 +37,9 @@ def main():
     print(f'Всего {count} конфет.')
     flag = bool(random.randint(0, 1))
     while count > 0:
-        if flag:
-            count = step_human(count, max_c)
-        else:
-            count = step_pc(count, max_c)
-        # count = step_human(count, max_c) * int(flag) + step_pc(count, max_c) * (1 - int(flag))
+        if flag: count = step_human(count, max_c)
+        else: count = step_pc(count, max_c)
         flag = not flag
-    if flag:
-        print(f'Победил ПК!')
-    else:
-        print(f'Поздравляем с победой!')
-
+    result(flag)
 
 main()
