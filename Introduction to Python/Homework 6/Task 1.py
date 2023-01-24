@@ -3,8 +3,6 @@
 
 import random
 
-N = 10
-
 def CreateList(cnt, mx):
     lst = list()
     for i in range(cnt):
@@ -30,8 +28,9 @@ sum4 = lambda lst: sum([v for i, v in enumerate(lst) if i%2==1])
 
 
 def main():
+    mx = 10
     cnt = int(input('Введите количество элементов списка: '))
-    lst = CreateList(cnt, N)
+    lst = CreateList(cnt, mx)
     print(f'Сумма элементов на нечетных позициях равна: {sum1(lst)}')
     print(f'Сумма элементов на нечетных позициях равна: {sum2(lst)}')
     print(f'Сумма элементов на нечетных позициях равна: {sum3(lst)}')
