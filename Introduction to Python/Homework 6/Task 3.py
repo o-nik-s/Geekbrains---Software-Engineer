@@ -35,7 +35,7 @@ def main():
     answ = 'Разница между максимальным и минимальным значением дробной части элементов равна:'
     print(f'{answ} {max_min_fraction(lst)}')
     print(f'{answ} {round(max(lst, key=fract)%1 - min(lst, key=fract)%1, 2)}')
-    print(f'{answ} {round(max(fract_map(lst))-min(fract_map(lst)), 2)}')
+    print(f'{answ} {round(max(fract_map(lst)) - min(fract_map(lst)), 2)}')
 
 
 main()
