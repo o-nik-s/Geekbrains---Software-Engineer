@@ -7,25 +7,27 @@ def Fibb(n:int):
 
 
 def NegaFibb(n:int):
-    if n == -1: return 1
-    elif n == -2: return -1
-    else: return NegaFibb(n+2) - NegaFibb(n+1)
+    if n == 1: return 1
+    elif n == 2: return -1
+    else: return NegaFibb(n-2) - NegaFibb(n-1)
 
 
-def NegaFibbList(n):
+def FuncList(func, n):
     lst = list()
-    for i in range(-1, -n, -1): lst.append(NegaFibb(i))
+    for i in range(1, n+1): lst.append(func(i))
     return lst
 
 
 
 def main():
-    cnt_f = int(input('Введите количество требуемых чисел негафибоначчи: '))
+    cnt_f = int(input('Введите количество требуемых чисел Фибоначчи: '))
 
-    print(f'Искомая последовательность чисел негафибоначчи:', *NegaFibbList(cnt_f+1))
+    print(f'Искомая последовательность чисел Фибоначчи:', \
+          *(FuncList(NegaFibb, cnt_f)[::-1] + [0] + FuncList(Fibb, cnt_f)))
 
-    nflst = [NegaFibb(i) for i in range(-1, -cnt_f-1, -1)]
-    print(f'Искомая последовательность чисел негафибоначчи:', *nflst)
+    f_lst = [Fibb(i) for i in range(1, cnt_f+1)]
+    nf_lst = [NegaFibb(i) for i in range(1, cnt_f+1)]
+    print(f'Искомая последовательность чисел Фибоначчи:', *(nf_lst[::-1] + [0] + f_lst))
 
 
 main()
