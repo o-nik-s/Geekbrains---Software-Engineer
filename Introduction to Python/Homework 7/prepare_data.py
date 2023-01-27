@@ -1,7 +1,7 @@
 def define_format(file_name:str):
     format = file_name.split('.')[-1]
     if format not in ('csv', 'txt'): 
-        print('Формат файла не распознан!')
+        print('Ошибка! Формат файла не распознан!')
     else: return format
 
 def prepare_data(lst:list, format):
