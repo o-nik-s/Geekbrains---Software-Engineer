@@ -3,19 +3,22 @@ from export_data import export_data
 from print_data import print_data
 from logging_data import log_data
 from edit_data import *
+from another_work import *
 
 
-def ask_about_data():
+def main_ask_about_data():
     print('\nЧто Вы хотите сделать?')
     print('1 - Импорт данных')
     print('2 - Экспорт данных')
     print('3 - Печать данных')
     print('4 - Очистка данных')
     print('5 - Добавить строку')
+    print('6 - Отредактировать строку')
     print('7 - Удалить строку')
+    print('0 - Прочее')
     print('Q - Закончить работу')
     answ = input()
-    if answ not in ('1', '2', '3', '4', '5', '7', 'Q', 'q'):
+    if answ not in ('1', '2', '3', '4', '5', '6', '7', '0', 'Q', 'q'):
         print('Ошибка ввода!')
         answ = None
     print()
@@ -25,7 +28,7 @@ def ask_about_data():
 def work_with_data():
     info_log = f"Начало работы программы"
     log_data(info_log)
-    answ, data = ask_about_data(), None
+    answ, data = main_ask_about_data(), None
     while answ not in ('Q', 'q'):
         match answ:
             case '1':
@@ -44,13 +47,15 @@ def work_with_data():
                 info_log = f'Очистка данных в программе'
             case '5': 
                 data = add_data(data)
-                info_log = f'Добавлена строка в базу'
+                info_log = f'Добавлена строка'
+            case '6': 
+                data = change_data(data)
+                info_log = f'Отредактирована строка'
             case '7': 
                 data = delete_data(data)
-                info_log = f'Добавлена строка в базу'
+                info_log = f'Удалена строка'
+            case '0': 
+                data = another_work_with_data(data)
         log_data(info_log)
-        answ = ask_about_data()
+        answ = main_ask_about_data()
     else: log_data("Завершение работы программы\n"+"-"*50)
-
-
-# work_with_data()

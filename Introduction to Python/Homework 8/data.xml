@@ -1,0 +1,32 @@
+<person>
+    <ID>ID</ID>
+    <firstName>Фамилия</firstName>
+    <lastName>Имя</lastName>
+    <patronymicName>Отчество</patronymicName>
+    <phoneNumber>Телефон</phoneNumber>
+    <describe>Описание</describe>
+</person>
+<person>
+    <ID>1</ID>
+    <firstName>Иванов</firstName>
+    <lastName>Иван</lastName>
+    <patronymicName>Иванович</patronymicName>
+    <phoneNumber>+7-909-212-12-12</phoneNumber>
+    <describe>Знакомый с работы</describe>
+</person>
+<person>
+    <ID>2</ID>
+    <firstName>Петров</firstName>
+    <lastName>Петр</lastName>
+    <patronymicName>Сидорович</patronymicName>
+    <phoneNumber>+7-909-432-43-94</phoneNumber>
+    <describe>Коллега</describe>
+</person>
+<person>
+    <ID>3</ID>
+    <firstName>Абапшин</firstName>
+    <lastName>Игорь</lastName>
+    <patronymicName>Николаевич</patronymicName>
+    <phoneNumber>+7-909-632-56-90</phoneNumber>
+    <describe>Однокурсник</describe>
+</person>

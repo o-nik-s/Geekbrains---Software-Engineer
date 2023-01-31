@@ -6,7 +6,7 @@ def define_format(file_name:str):
 
 
 def prepare_data_to_xml(data:list=None):
-    fields = ['firstName', 'lastName', 'patronymicName', 'phoneNumber', 'describe']
+    fields = ['ID', 'firstName', 'lastName', 'patronymicName', 'phoneNumber', 'describe']
     text = ''
     for person in data:
         text += '<person>\n'
