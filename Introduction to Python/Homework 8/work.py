@@ -2,8 +2,9 @@ from import_data import import_data
 from export_data import export_data
 from print_data import print_data
 from logging_data import log_data
+from search_in_data import search_in_data
 from edit_data import *
-from another_work import *
+from another_work import another_work_with_data
 
 
 def main_ask_about_data():
@@ -15,10 +16,11 @@ def main_ask_about_data():
     print('5 - Добавить строку')
     print('6 - Отредактировать строку')
     print('7 - Удалить строку')
+    print('8 - Поиск данных')
     print('0 - Прочее')
     print('Q - Закончить работу')
     answ = input()
-    if answ not in ('1', '2', '3', '4', '5', '6', '7', '0', 'Q', 'q'):
+    if answ not in ('1', '2', '3', '4', '5', '6', '7', '8', '0', 'Q', 'q'):
         print('Ошибка ввода!')
         answ = None
     print()
@@ -54,6 +56,9 @@ def work_with_data():
             case '7': 
                 data = delete_data(data)
                 info_log = f'Удалена строка'
+            case '8': 
+                search_in_data(data)
+                info_log = f'Поиск данных'
             case '0': 
                 data = another_work_with_data(data)
         log_data(info_log)
