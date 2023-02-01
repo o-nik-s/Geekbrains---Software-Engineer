@@ -14,8 +14,7 @@ def import_data_from_xml(text:str=None):
 def import_data(file_name:str, encoding:str='UTF-8'):
     format = define_format(file_name)
     if format is None: return
-    with open(file_name, 'r', encoding=encoding) as file:
-        text = file.read()
+    with open(file_name, 'r', encoding=encoding) as file: text = file.read()
     if format == 'csv': data = list(map(lambda x: x.split(';'), text.split('\n')))
     elif format == 'txt': data = list(map(lambda x: x.split('\n'), text.split('\n\n')))
     elif format == 'xml': data = import_data_from_xml(text)

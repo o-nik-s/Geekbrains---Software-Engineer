@@ -3,7 +3,7 @@ from export_data import export_data
 from print_data import print_data
 from logging_data import log_data
 from search_in_data import search_in_data
-from edit_data import *
+from edit_data import add_data, change_data, delete_data
 from another_work import another_work_with_data
 
 
@@ -17,7 +17,7 @@ def main_ask_about_data():
     print('6 - Отредактировать строку')
     print('7 - Удалить строку')
     print('8 - Поиск данных')
-    print('0 - Прочее')
+    # print('0 - Прочее')
     print('Q - Закончить работу')
     answ = input()
     if answ not in ('1', '2', '3', '4', '5', '6', '7', '8', '0', 'Q', 'q'):
@@ -48,14 +48,14 @@ def work_with_data():
                 data.clear()
                 info_log = f'Очистка данных в программе'
             case '5': 
-                data = add_data(data)
-                info_log = f'Добавлена строка'
+                data, id = add_data(data)
+                info_log = f'Добавлена строка с id={id}'
             case '6': 
-                data = change_data(data)
-                info_log = f'Отредактирована строка'
+                data, id = change_data(data)
+                info_log = f'Отредактирована строка c id={id}'
             case '7': 
-                data = delete_data(data)
-                info_log = f'Удалена строка'
+                data, id = delete_data(data)
+                info_log = f'Удалена строка c id={id}'
             case '8': 
                 search_in_data(data)
                 info_log = f'Поиск данных'

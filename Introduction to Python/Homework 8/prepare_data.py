@@ -14,7 +14,7 @@ def prepare_data_to_xml(data:list=None):
     return text
 
 
-def prepare_data(lst:list, format):
+def prepare_data(lst:list, format:str):
     format = define_format(format)
     if format is None: return
     if format == 'csv': data = list(map(lambda x: ';'.join(x)+'\n', lst))
