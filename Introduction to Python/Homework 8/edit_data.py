@@ -5,7 +5,7 @@ def add_data(data:list=None):
     if data is None:
         answ = input('Отсутствует открытая база данных. Продолжить (Y/Any)? ')
         if answ not in ('Y', 'y'): return data, None
-        else: data = [['ID'] + cnst.FIELDS_RU]
+        else: data = [cnst.FIELDS_RU]
     lst = [str(len(data))]
     for name_field in cnst.FIELDS_RU[1:]: lst.append(input(f'Введите {name_field}: '))
     data.append(lst)
