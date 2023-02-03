@@ -1,5 +1,4 @@
 import telebot
-# from telebot import types
 
 import numpy as np
 import random
@@ -35,27 +34,20 @@ def start(message):
         bot.register_next_step_handler(msg, step_user, board)
 
 def step_user(message, board):
-    print(message.text)
     step = message.text
     if step in [str(i) for i in range(1, 10)]:
-        print(int(step)-1)
         if board[int(step)-1] == " ": 
             board[int(step)-1] = "X"
-            # print(board)
-            print_board_telebot(message.chat.id, board)
-            if winner(board, "X"): 
-                bot.send_message(message.chat.id, 'Вы выиграли!', )
-                msg = bot.send_message(message.chat.id, "Для начала с начала введите '/start'")
-                bot.register_next_step_handler(msg, start)
-                return
-            if board.count(' ') == 0:
-                bot.send_message(message.chat.id, 'Ничья!', )
+            if winner(board, "X") or board.count(' ') == 0: 
+                print_board_telebot(message.chat.id, board)
+                if winner(board, "X"): bot.send_message(message.chat.id, 'Вы выиграли!', )
+                elif board.count(' ') == 0: bot.send_message(message.chat.id, 'Ничья!', ) 
                 msg = bot.send_message(message.chat.id, "Для начала с начала введите '/start'")
                 bot.register_next_step_handler(msg, start)
                 return
             step_pc(board)
-            print_board_telebot(message.chat.id, board)
             if winner(board, "O"): 
+                print_board_telebot(message.chat.id, board)
                 bot.send_message(message.chat.id, 'ПК выиграл!', )
                 msg = bot.send_message(message.chat.id, "Для начала с начала введите '/start'")
                 bot.register_next_step_handler(msg, start)
