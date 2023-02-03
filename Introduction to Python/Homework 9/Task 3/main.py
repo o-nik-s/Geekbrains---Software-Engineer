@@ -11,21 +11,6 @@ bot = telebot.TeleBot(tkn.TOKEN)
 directory = u'C:\\Telegram\\'
 
 
-
-def ask_about_data():
-    print('\nЧто Вы хотите сделать?')
-    print('1 - Импорт данных')
-    print('2 - Экспорт данных')
-    print('3 - Печать данных')
-    print('Q - Закончить работу')
-    answ = input()
-    if answ not in ('1', '2', '3', 'Q', 'q'):
-        print('Ошибка ввода!')
-        answ = None
-    print()
-    return answ
-
-
 bot = telebot.TeleBot(tkn.TOKEN)
 
 
@@ -48,6 +33,7 @@ def start(message, lst_text=None):
     elif message.text == '2':
         data = '\n'.join(map(lambda x: ' '.join(x), lst_text))
         bot.send_message(message.chat.id, data)
+        log_data(f'Печать данных')
         msg = print_message(message)
         bot.register_next_step_handler(msg, start, lst_text)
         
@@ -67,6 +53,7 @@ def import_file(message):
             bot.register_next_step_handler(msg, import_file)
         lst_text = import_data(file_name)
         bot.send_message(message.chat.id, 'Импорт данных выполнен!')
+        log_data(f'Импорт данных из {file_name}')
         msg = print_message(message)
         bot.register_next_step_handler(msg, start, lst_text)
     except Exception as e:
@@ -74,6 +61,9 @@ def import_file(message):
         msg = bot.send_message(message.chat.id, 'Направьте импортируемый файл.')
         bot.register_next_step_handler(msg, import_file)
 
+
+# file_name = input('Введите имя экспортируемого файла: ')
+# export_data(text, file_name)
 
 
 if not os.path.exists(directory): os.mkdir(directory)
