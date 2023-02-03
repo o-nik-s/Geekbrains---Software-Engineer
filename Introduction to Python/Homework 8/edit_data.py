@@ -1,5 +1,17 @@
 
 
+<<<<<<< HEAD
+=======
+def add_data(data:list=None):
+    if data is None:
+        answ = input('Отсутствует открытая база данных. Продолжить (Y/Any)? ')
+        if answ not in ('Y', 'y'): return data, None
+        else: data = [cnst.FIELDS_RU]
+    lst = [str(len(data))]
+    for name_field in cnst.FIELDS_RU[1:]: lst.append(input(f'Введите {name_field}: '))
+    data.append(lst)
+    return data, lst[0]
+>>>>>>> 0b6e7fb907bad30c9890c55bd275be1d42e9366f
 
 
 
@@ -75,6 +87,7 @@
 
     
 
+<<<<<<< HEAD
   <meta name="request-id" content="88B0:1750:1609A5C:16B2188:63DD3E48" data-turbo-transient="true" /><meta name="html-safe-nonce" content="d3a11af4c6e888e9209d8a6d97085843d9e2cb717c9e7285fbcf3cb54c2647b3" data-turbo-transient="true" /><meta name="visitor-payload" content="eyJyZWZlcnJlciI6Imh0dHBzOi8vZ2l0aHViLmNvbS9vLW5pay1zL0dlZWticmFpbnMtLS1Tb2Z0d2FyZS1FbmdpbmVlci90cmVlL21haW4vSW50cm9kdWN0aW9uJTIwdG8lMjBQeXRob24vSG9tZXdvcmslMjA4IiwicmVxdWVzdF9pZCI6Ijg4QjA6MTc1MDoxNjA5QTVDOjE2QjIxODg6NjNERDNFNDgiLCJ2aXNpdG9yX2lkIjoiMzc0ODI5NzY2MjYwMjA0NjA1OSIsInJlZ2lvbl9lZGdlIjoiZnJhIiwicmVnaW9uX3JlbmRlciI6ImlhZCJ9" data-turbo-transient="true" /><meta name="visitor-hmac" content="518167e8e565a1151c97fdb01d66ae6c42a92f0d09ecb9e986ce864befae6690" data-turbo-transient="true" />
 
 
@@ -3252,3 +3265,14 @@
   </body>
 </html>
 
+=======
+def delete_data(data:list=None):
+        if data is None: print('Отсутствует5 открытая база данных!')
+        else: 
+            answ = input('Введите идентификатор удаляемой строки: ')
+            if not answ.isdigit() or answ == '0': return data, None
+            indx = {d[0]:i for i, d in enumerate(data)}
+            try: data.pop(indx[answ])
+            except: print('Ошибка удаления!')
+        return data, answ
+>>>>>>> 0b6e7fb907bad30c9890c55bd275be1d42e9366f
