@@ -1,3 +1,5 @@
+# Создайте программу для игры в ""Крестики-нолики"" при помощи виртуального окружения и PIP
+
 import telebot
 
 import numpy as np
@@ -11,10 +13,12 @@ def print_board_telebot(id, board):
     for i in np.arange(0, 9, step=3):
         bot.send_message(id, "| {} | {} | {} |".format(board[i], board[i+1], board[i+2]))
 
+
 def step_pc(board):
     possibleMoves = [x for x, letter in enumerate(board) if letter == " "]
     move = random.choice(possibleMoves)
     board[move] = 'O'
+
 
 def winner(board, icon):
     win_fields = ['012', '345', '678', '036', '147', '258', '048', '246']
@@ -22,6 +26,7 @@ def winner(board, icon):
         if board[int(w_field[0])] == icon and board[int(w_field[1])] == icon and board[int(w_field[2])] == icon:
             return True
     return False
+
 
 bot = telebot.TeleBot(tkn.TOKEN)
 @bot.message_handler(content_types=["text"])
@@ -32,6 +37,7 @@ def start(message):
         print_board_telebot(message.chat.id, board)
         msg = bot.send_message(message.chat.id, 'Ваш ход (введите номер поля):')
         bot.register_next_step_handler(msg, step_user, board)
+
 
 def step_user(message, board):
     step = message.text
