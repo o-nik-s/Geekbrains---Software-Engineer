@@ -6,9 +6,6 @@
 
 package geekbrains_course.Homework_4.Task_1;
 
-import geekbrains_course.Seminar_4.Task_1.ListNode;
-
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
