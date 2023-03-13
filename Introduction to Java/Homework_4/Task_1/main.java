@@ -1,50 +1,36 @@
-//Дан массив записей: наименование товара, цена, сорт.
-// Найти наибольшую цену товаров 1го или 2го сорта среди товаров,
-// название которых содержит «высший».
+// Вывести список на экран в перевернутом виде (без массивов и ArrayList)
+// Пример:
+// 1 -> 2->3->4
+// Вывод:
+// 4->3->2->1
 
-package geekbrains_course.Homework_3.Task_1;
+package geekbrains_course.Homework_4.Task_1;
 
-import geekbrains_course.Homework_3.Task_1.model.Item;
+import geekbrains_course.Seminar_4.Task_1.ListNode;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Scanner;
 
-public class main {
-
+public class Main {
     public static void main(String[] args) {
 
-        List<Item> itemList = defineItemList();
-        System.out.println(itemList);
-
-        Integer maxPrise = 0;
-        for (int i = 0; i < itemList.size(); i++) {
-            if (itemList.get(i).getName().toLowerCase().contains("высший")
-                    && ((itemList.get(i).getGrade().equals(1)) || itemList.get(i).getGrade().equals(2)))  {
-                if (itemList.get(i).getPrice()>maxPrise) {
-                    maxPrise = itemList.get(i).getPrice();
-                }
-            }
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите количество элементов в списке: ");
+        int n = scanner.nextInt();
+        for (int i = 0; i < n; i++) {
+            linkedList.add(i);
         }
-        System.out.println("Максимальная цена товаров, удовлетворяющих условиям, равна: " + maxPrise);
-    }
-    public static List<Item> defineItemList() {
-        Item item1 = new Item("Высший товар 1", 27,1);
-        Item item2 = new Item("Обычный товар 2", 47,2);
-        Item item3 = new Item("Хороший товар 3", 53,3);
-        Item item4 = new Item("Высший сорт 4", 37,1);
-        Item item5 = new Item("Высший 5", 17,2);
-        Item item6 = new Item("Разный 6", 15,3);
-        Item item7 = new Item("Разный 7", 20,1);
+        scanner.close();
 
-        List<Item> itemList= new ArrayList<>();
-        itemList.add(item1);
-        itemList.add(item2);
-        itemList.add(item3);
-        itemList.add(item4);
-        itemList.add(item5);
-        itemList.add(item6);
-        itemList.add(item7);
+        System.out.println("Исходный список:");
+        System.out.println(linkedList);
 
-        return itemList;
+        System.out.println("Печать перевернутого списка:");
+        while (!linkedList.isEmpty()) {
+            System.out.print(linkedList.pollLast() + " ");
+        }
+
     }
 }
