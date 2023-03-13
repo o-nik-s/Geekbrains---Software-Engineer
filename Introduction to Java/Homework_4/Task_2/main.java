@@ -18,26 +18,16 @@ class Solution {
                     stack.push(ch);
                     break;
                 case ')':
-                    if(stack.isEmpty() || stack.pop() != '(')
-                    {
-                        return false;
-                    }
+                    if (stack.isEmpty() || stack.pop() != '(') {return false;}
                     break;
                 case '}':
-                    if(stack.isEmpty() || stack.pop() != '{')
-                    {
-                        return false;
-                    }
+                    if (stack.isEmpty() || stack.pop() != '{') {return false;}
                     break;
                 case ']':
-                    if(stack.isEmpty() || stack.pop() != '[')
-                    {
-                        return false;
-                    }
+                    if (stack.isEmpty() || stack.pop() != '[') {return false;}
                     break;
             }
         }
        return stack.isEmpty();
-        
     }
 }
