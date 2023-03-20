@@ -1,7 +1,5 @@
 package geekbrains_course.Homework_6.model;
 
-import geekbrains_course.Homework_6.model.Laptop;
-
 import java.util.*;
 
 import static java.lang.Math.round;
@@ -27,22 +25,43 @@ public class Main {
 
         Laptop laptop = laptopList.get(5);
         useMethods(laptop);
+        System.out.println();
 
         ArrayList<Object> choices = userInterface(filteringСriteriaList);
 
+        filter(filteringСriteriaList, choices);
+
+
+
 
     }
 
-    public static void useMethods(Laptop laptop){
-        System.out.println(laptop);
-        laptop.setNewPrice(round(laptop.getPrice() * 1.1));
-        laptop.sell();
-        laptop.bringGoodsToWarehouse(25);
-        laptop.sell();
-        laptop.sell();
-        System.out.println(laptop);
+    public static void filter(HashMap<Integer, ArrayList> filteringСriteriaList, ArrayList<Object> choices) {
+        switch ((Integer) choices.get(0)) {
+            case (1):
+                if ((Integer) choices.get(1) == 1) {
+                    // Здесь будет поиск по названию модели
+                }
+                break;
+            case (2):
+                switch ((Integer) choices.get(1)) {
+                    case (1): {
+                        // Указана минимальная цена товара
+                    }
+                    case (2): {
+                        // Указана максимальная цена товара
+                    }
+                    case (3): {
+                        // Указана минимальная и максимальная цена товара
+                    }
+                }
+                break;
+//            System.out.println(1);
+        }
+
     }
-    public static ArrayList<Object> userInterface(HashMap<Integer, ArrayList> filteringСriteriaList){
+
+    public static ArrayList<Object> userInterface(HashMap<Integer, ArrayList> filteringСriteriaList) {
 
         ArrayList<Object> choices = new ArrayList<>(3);
         System.out.println("Выберите критерий фильтрации");
@@ -62,13 +81,24 @@ public class Main {
             System.out.printf("%d: %s\n", filter2, filterList.get(filter2));
         }
         choices.add(scanner.nextInt());
+        scanner.nextLine();
 
         System.out.println("Укажите " + filterList.get(choices.get(1)));
-        Object crit3 = scanner.nextLine();
-        choices.add(crit3);
+        choices.add(scanner.nextLine());
 
         return choices;
 
+    }
+
+    public static void useMethods(Laptop laptop) {
+        System.out.println(laptop);
+        laptop.setNewPrice(round(laptop.getPrice() * 1.1));
+        laptop.sell();
+        laptop.bringGoodsToWarehouse(25);
+        laptop.returnGoods(3);
+        laptop.sell();
+        laptop.sell();
+        System.out.println(laptop);
     }
     public static HashMap<Integer, ArrayList> defineFilteringCriteria() {
 
@@ -85,6 +115,8 @@ public class Main {
         priceHashMap.put(1, "Минимальная цена: ");
         priceDescribe.add(priceHashMap);
         priceHashMap.put(2, "Максимальная цена: ");
+        priceDescribe.add(priceHashMap);
+        priceHashMap.put(3, "Минимальная и максимальная цена: ");
         priceDescribe.add(priceHashMap);
         filteringCriteria.put(2, priceDescribe);
 

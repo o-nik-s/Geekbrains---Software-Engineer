@@ -25,11 +25,11 @@ public class Laptop {
     public void bringGoodsToWarehouse(Integer bringCount){
         count += bringCount;
     }
+    public void returnGoods(Integer returnCount){
+        count -= returnCount;
+    }
     public void setNewPrice(double newPrice){
         price = newPrice;
     }
-
-
-
 
 }
