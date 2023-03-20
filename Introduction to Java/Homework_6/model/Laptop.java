@@ -18,4 +18,18 @@ public class Laptop {
     private double weight;
     private double price;
     private Integer count;
+
+    public void sell(){
+        count -= 1;
+    }
+    public void bringGoodsToWarehouse(Integer bringCount){
+        count += bringCount;
+    }
+    public void setNewPrice(double newPrice){
+        price = newPrice;
+    }
+
+
+
+
 }
