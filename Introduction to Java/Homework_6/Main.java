@@ -29,18 +29,27 @@ public class Main {
 
         ArrayList<Object> choices = userInterface(filteringСriteriaList);
 
-        filter(filteringСriteriaList, choices);
+        filter(laptopList, filteringСriteriaList, choices);
 
 
 
 
     }
 
-    public static void filter(HashMap<Integer, ArrayList> filteringСriteriaList, ArrayList<Object> choices) {
+    public static void filter(List<Laptop> laptopList, HashMap<Integer, ArrayList> filteringСriteriaList, ArrayList<Object> choices) {
+
+        List<Laptop> filtredLaptop = new ArrayList<>();
+
         switch ((Integer) choices.get(0)) {
             case (1):
                 if ((Integer) choices.get(1) == 1) {
-                    // Здесь будет поиск по названию модели
+                    String nameModel = (String) choices.get(2);
+                    for (Laptop laptop:
+                         laptopList) {
+                        if (laptop.getModel().contains(nameModel)) {
+                            filtredLaptop.add(laptop);
+                        }
+                    }
                 }
                 break;
             case (2):
@@ -56,7 +65,6 @@ public class Main {
                     }
                 }
                 break;
-//            System.out.println(1);
         }
 
     }
@@ -89,7 +97,6 @@ public class Main {
         return choices;
 
     }
-
     public static void useMethods(Laptop laptop) {
         System.out.println(laptop);
         laptop.setNewPrice(round(laptop.getPrice() * 1.1));
@@ -116,14 +123,13 @@ public class Main {
         priceDescribe.add(priceHashMap);
         priceHashMap.put(2, "Максимальная цена: ");
         priceDescribe.add(priceHashMap);
-        priceHashMap.put(3, "Минимальная и максимальная цена: ");
+        priceHashMap.put(3, "Минимальная и Максимальная цена: ");
         priceDescribe.add(priceHashMap);
         filteringCriteria.put(2, priceDescribe);
 
         return filteringCriteria;
 
     }
-
     public static List<Laptop> defineLaptopList() {
         Laptop laptop1 = new Laptop("HP", "HP EliteBook", "Germany",
                 "grey", 17, "Intel Core i7", 64, 2000, "Windows",
@@ -156,7 +162,7 @@ public class Main {
                 "blue", 17, "Intel Core i7", 64, 2500, "Fedora",
                 4100, 95000, 550);
 
-        List<Laptop> laptopList= new ArrayList<>();
+        List<Laptop> laptopList = new ArrayList<>();
         laptopList.add(laptop1);
         laptopList.add(laptop2);
         laptopList.add(laptop3);
