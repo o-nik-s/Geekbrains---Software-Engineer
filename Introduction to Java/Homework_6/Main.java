@@ -33,10 +33,6 @@ public class Main {
 
         printListLaptop(filtredList);
 
-//        System.out.println(filtredList);
-
-
-
     }
 
     public static void printListLaptop(List<Laptop> laptopList) {
@@ -46,6 +42,7 @@ public class Main {
             System.out.printf("%d   %s   %.2f   %d\n", laptop.getNumber(), laptop.getModel(), laptop.getPrice(), laptop.getCount());
         }
     }
+
     public static List<Laptop> filter(List<Laptop> laptopList, HashMap<Integer, ArrayList> filteringСriteriaList, ArrayList<Object> choices) {
 
         List<Laptop> filtredLaptop = new ArrayList<>();
@@ -63,15 +60,40 @@ public class Main {
                 }
                 break;
             case (2):
+                System.out.println(choices.get(1));
                 switch ((Integer) choices.get(1)) {
                     case (1): {
-                        // Указана минимальная цена товара
+                        double lowPrice = Double.parseDouble((String) choices.get(2));
+                        System.out.println(lowPrice);
+                        for (Laptop laptop:
+                                laptopList) {
+                            if (laptop.getPrice()>=lowPrice) {
+                                filtredLaptop.add(laptop);
+                            }
+                        }
+                        break;
                     }
                     case (2): {
-                        // Указана максимальная цена товара
+                        double highPrice = Double.parseDouble((String) choices.get(2));
+                        for (Laptop laptop:
+                                laptopList) {
+                            if (laptop.getPrice()<=highPrice) {
+                                filtredLaptop.add(laptop);
+                            }
+                        }
+                        break;
                     }
                     case (3): {
-                        // Указана минимальная и максимальная цена товара
+                        String[] lowHighStringPrices = choices.get(2).toString().split(" ");
+                        double lowPrice = Double.parseDouble(lowHighStringPrices[0]);
+                        double highPrice = Double.parseDouble(lowHighStringPrices[1]);
+                        for (Laptop laptop:
+                                laptopList) {
+                            if ((lowPrice <= laptop.getPrice()) && (laptop.getPrice()<=highPrice)) {
+                                filtredLaptop.add(laptop);
+                            }
+                        }
+                        break;
                     }
                 }
                 break;
@@ -94,7 +116,6 @@ public class Main {
         choices.add(scanner.nextInt());
 
         System.out.println("Выберите фильтр: ");
-//        Integer crit1 = (Integer) choices.get(0);
         HashMap<Integer, String> filterList =
                 (HashMap<Integer, String>) filteringСriteriaList.get((Integer) choices.get(0)).get(1);
         for (Integer filter2 :
@@ -110,6 +131,7 @@ public class Main {
         return choices;
 
     }
+
     public static void useMethods(Laptop laptop) {
         System.out.println(laptop);
         laptop.setNewPrice(round(laptop.getPrice() * 1.1));
@@ -120,29 +142,31 @@ public class Main {
         laptop.sell();
         System.out.println(laptop);
     }
+
     public static HashMap<Integer, ArrayList> defineFilteringCriteria() {
 
         HashMap<Integer, ArrayList> filteringCriteria = new HashMap<>();
 
         ArrayList<Object> modelDescribe = new ArrayList<>(Arrays.asList("Модель"));
         HashMap<Integer, String> modelHashMap = new HashMap<>();
-        modelHashMap.put(1, "Название модели: ");
+        modelHashMap.put(1, "Название модели ");
         modelDescribe.add(modelHashMap);
         filteringCriteria.put(1, modelDescribe);
 
         ArrayList<Object> priceDescribe = new ArrayList<>(Arrays.asList("Цена"));
         HashMap<Integer, String> priceHashMap = new HashMap<>();
-        priceHashMap.put(1, "Минимальная цена: ");
+        priceHashMap.put(1, "Минимальная цена ");
         priceDescribe.add(priceHashMap);
-        priceHashMap.put(2, "Максимальная цена: ");
+        priceHashMap.put(2, "Максимальная цена ");
         priceDescribe.add(priceHashMap);
-        priceHashMap.put(3, "Минимальная и Максимальная цена: ");
+        priceHashMap.put(3, "Минимальная и Максимальная цена ");
         priceDescribe.add(priceHashMap);
         filteringCriteria.put(2, priceDescribe);
 
         return filteringCriteria;
 
     }
+
     public static List<Laptop> defineLaptopList() {
         Laptop laptop1 = new Laptop(1, "HP", "HP EliteBook", "Germany",
                 "grey", 17, "Intel Core i7", 64, 2000, "Windows",
