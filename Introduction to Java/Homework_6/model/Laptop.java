@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Laptop {
+    private Integer number;
     private String brand;
     private String model;
     private String manufactorCountry;

@@ -29,14 +29,24 @@ public class Main {
 
         ArrayList<Object> choices = userInterface(filteringСriteriaList);
 
-        filter(laptopList, filteringСriteriaList, choices);
+        List<Laptop> filtredList = filter(laptopList, filteringСriteriaList, choices);
 
+        printListLaptop(filtredList);
+
+//        System.out.println(filtredList);
 
 
 
     }
 
-    public static void filter(List<Laptop> laptopList, HashMap<Integer, ArrayList> filteringСriteriaList, ArrayList<Object> choices) {
+    public static void printListLaptop(List<Laptop> laptopList) {
+        System.out.println("Number   Model   Price   Count");
+        for (Laptop laptop :
+                laptopList) {
+            System.out.printf("%d   %s   %.2f   %d\n", laptop.getNumber(), laptop.getModel(), laptop.getPrice(), laptop.getCount());
+        }
+    }
+    public static List<Laptop> filter(List<Laptop> laptopList, HashMap<Integer, ArrayList> filteringСriteriaList, ArrayList<Object> choices) {
 
         List<Laptop> filtredLaptop = new ArrayList<>();
 
@@ -67,6 +77,8 @@ public class Main {
                 break;
         }
 
+        return filtredLaptop;
+
     }
 
     public static ArrayList<Object> userInterface(HashMap<Integer, ArrayList> filteringСriteriaList) {
@@ -82,8 +94,9 @@ public class Main {
         choices.add(scanner.nextInt());
 
         System.out.println("Выберите фильтр: ");
-        Integer crit1 = (Integer) choices.get(0);
-        HashMap<Integer, String> filterList = (HashMap<Integer, String>) filteringСriteriaList.get(crit1).get(1);
+//        Integer crit1 = (Integer) choices.get(0);
+        HashMap<Integer, String> filterList =
+                (HashMap<Integer, String>) filteringСriteriaList.get((Integer) choices.get(0)).get(1);
         for (Integer filter2 :
                 filterList.keySet()) {
             System.out.printf("%d: %s\n", filter2, filterList.get(filter2));
@@ -131,34 +144,34 @@ public class Main {
 
     }
     public static List<Laptop> defineLaptopList() {
-        Laptop laptop1 = new Laptop("HP", "HP EliteBook", "Germany",
+        Laptop laptop1 = new Laptop(1, "HP", "HP EliteBook", "Germany",
                 "grey", 17, "Intel Core i7", 64, 2000, "Windows",
                 2500, 105000, 1000);
-        Laptop laptop2 = new Laptop("HP", "HP ProBook", "Germany",
+        Laptop laptop2 = new Laptop(2, "HP", "HP ProBook", "Germany",
                 "red", 15, "Intel Core i9", 32, 2200, "Windows",
                 2000, 105000, 2050);
-        Laptop laptop3 = new Laptop("HP", "HP EliteBook", "English",
+        Laptop laptop3 = new Laptop(3, "HP", "HP EliteBook", "English",
                 "grey", 14, "Intel Core i5", 16, 500, "Ubuntu",
                 3500, 75000, 2500);
-        Laptop laptop4 = new Laptop("HP", "HP Essential", "France",
+        Laptop laptop4 = new Laptop(4, "HP", "HP Essential", "France",
                 "blaсk", 19, "AMD Ryzen 7", 8, 1000, "Fedora",
                 2700, 90000, 1500);
-        Laptop laptop5 = new Laptop("HP", "HP EliteBook", "English",
+        Laptop laptop5 = new Laptop(5, "HP", "HP EliteBook", "English",
                 "green", 14, "Intel Core i3", 8, 1700, "Windows",
                 2300, 70000, 1050);
-        Laptop laptop6 = new Laptop("HP", "HP ProBook", "Germany",
+        Laptop laptop6 = new Laptop(6, "HP", "HP ProBook", "Germany",
                 "blaсk", 15, "Intel Core i5", 32, 2500, "Windows",
                 2700, 85000, 700);
-        Laptop laptop7 = new Laptop("HP", "HP Essential", "France",
+        Laptop laptop7 = new Laptop(7, "HP", "HP Essential", "France",
                 "grey", 14, "AMD Ryzen 7", 8, 2200, "Ubuntu",
                 3200, 75000, 500);
-        Laptop laptop8 = new Laptop("HP", "HP ProBook", "English",
+        Laptop laptop8 = new Laptop(8, "HP", "HP ProBook", "English",
                 "blaсk", 14, "Intel Core i7", 32, 7500, "Chrome OS",
                 2500, 70000, 750);
-        Laptop laptop9 = new Laptop("HP", "HP EliteBook", "France",
+        Laptop laptop9 = new Laptop(9, "HP", "HP EliteBook", "France",
                 "blaсk", 17, "AMD Ryzen 9", 16, 500, "Linux",
                 4100, 95000, 550);
-        Laptop laptop10 = new Laptop("HP", "HP ProBook", "English",
+        Laptop laptop10 = new Laptop(10, "HP", "HP ProBook", "English",
                 "blue", 17, "Intel Core i7", 64, 2500, "Fedora",
                 4100, 95000, 550);
 
