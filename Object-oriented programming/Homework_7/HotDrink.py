@@ -25,10 +25,3 @@ class HotDrink():
     
     def Drink(self):
         print(f"You drink {self._volume} ml {self._name}")
-
-
-drink = HotDrink("Tea", 45)
-  
-drink.volume = 19
-  
-print(drink.volume, drink.name)
