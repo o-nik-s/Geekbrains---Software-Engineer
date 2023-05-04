@@ -14,20 +14,13 @@ sudo apt-get install php libapache2-mod-php php-mysql
 2.
 sudo apt install apache2
 
-sudo apt install libapache2-mod-php -y
-
+sudo apt install libapache2-mod-php php -y
+sudo apt install php-fpm
 
 cd /etc/apache2
 sudo nano ports.conf
 Listen 8080 -> Save
 start apache2
-
-sudo nano /etc/apache2/mods-enabled/dir.conf
-<VirtualHost *:80>
-<IfModule mod_dir.c>
-    DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
-</IfModule>
-sudo systemctl restart apache2
 
 3.
 
