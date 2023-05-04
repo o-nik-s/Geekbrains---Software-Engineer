@@ -23,7 +23,11 @@ Listen 8080 -> Save
 start apache2
 
 3.
-
+cd /etc/nginx
+cd sites-enabled/
+nano default
+changes default
+systemctl reload nginx
 
 4.
 sudo apt install mysql-server mysql-client -y
