@@ -1,0 +1,44 @@
+* Установить Nginx и настроить его на работу с PHP-FPM.
+* Установить Apache. Настроить обработку PHP. Добиться одновременной работы с Nginx.
+* Настроить схему обратного прокси для Nginx (динамика - на Apache).
+* Установить MySQL. Создать новую базу данных и таблицу в ней.
+* * Установить пакет phpmyadmin и запустить его веб-интерфейс для управления MySQL.
+* * Настроить схему балансировки трафика между несколькими серверами Apache на стороне Nginx с помощью модуля ngx_http_upstream_module.
+
+apt install curl
+
+1.
+sudo apt install nginx
+sudo apt-get install php libapache2-mod-php php-mysql
+
+2.
+sudo apt install apache2
+
+sudo apt install libapache2-mod-php -y
+
+
+cd /etc/apache2
+sudo nano ports.conf
+Listen 8080 -> Save
+start apache2
+
+sudo nano /etc/apache2/mods-enabled/dir.conf
+<VirtualHost *:80>
+<IfModule mod_dir.c>
+    DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+</IfModule>
+sudo systemctl restart apache2
+
+3.
+
+
+4.
+sudo apt install mysql-server mysql-client -y
+sudo mysql
+use mysql
+create database database1
+create table table1 (i INT, name TEXT)
+
+5.
+sudo apt install phpmyadmin
+sudo ln -s /usr/share/phpmyadmin /var/www/html/
