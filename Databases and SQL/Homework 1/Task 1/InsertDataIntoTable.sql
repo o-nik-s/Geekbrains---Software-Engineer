@@ -1,3 +1,4 @@
+-- Заполните БД данными.
 INSERT INTO `db_geekbrains`.`mobilephones` (`Id`, `ProductName`, `Manufacturer`, `ProductCount`, `Price`) VALUES ('1', 'Samsung Galaxy M32', 'Samsung', '10', '17000');
 INSERT INTO `db_geekbrains`.`mobilephones` (`Id`, `ProductName`, `Manufacturer`, `ProductCount`, `Price`) VALUES ('2', 'Samsung Galaxy A03', 'Samsung', '7', '4500');
 INSERT INTO `db_geekbrains`.`mobilephones` (`Id`, `ProductName`, `Manufacturer`, `ProductCount`, `Price`) VALUES ('3', 'Samsung Galaxy A23', 'Samsung', '9', '17000');
