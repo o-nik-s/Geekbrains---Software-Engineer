@@ -5,10 +5,10 @@ Select City, SName, SNum, Comm from SalesPeople
 Select Cname, Rating from Customers
 where City = 'SanJose'
 
--- 3. Напишите запрос, который вывел бы значения snum всех продавцов из таблицы заказов без каких бы то ни было повторений (уникальные значения в “snum“ “Продавцы”)
+-- 3. Напишите запрос, который вывел бы значения snum всех продавцов из таблицы заказов без каких бы то ни было повторений (уникальные значения в “snum“ “Продавцы”).
 Select distinct SNum from Customers
 
--- 4. Напишите запрос, который бы выбирал заказчиков, чьи имена начинаются с буквы G. Используется оператор "LIKE": (“заказчики”) 
+-- 4. Напишите запрос, который бы выбирал заказчиков, чьи имена начинаются с буквы G. Используется оператор "LIKE" (“заказчики”).
 -- https://dev.mysql.com/doc/refman/8.0/en/string-comparison-functions.html
 Select Cname, Rating from Customers
 where Cname like "G%"
