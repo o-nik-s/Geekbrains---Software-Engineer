@@ -44,3 +44,28 @@ INSERT INTO `db_geekbrains`.`Orders` (`ONum`, `Amt`, `ODate`, `CNum`, `SNum`) VA
 INSERT INTO `db_geekbrains`.`Orders` (`ONum`, `Amt`, `ODate`, `CNum`, `SNum`) VALUES ('3008', 4723.00, '1990/05/10', 2006, 1001);
 INSERT INTO `db_geekbrains`.`Orders` (`ONum`, `Amt`, `ODate`, `CNum`, `SNum`) VALUES ('3010', 1309.95, '1990/06/10', 2004, 1002);
 INSERT INTO `db_geekbrains`.`Orders` (`ONum`, `Amt`, `ODate`, `CNum`, `SNum`) VALUES ('3011', 9891.88, '1990/06/10', 2006, 1001);
+
+
+
+CREATE TABLE IF NOT EXISTS Employee
+	(Id SERIAL PRIMARY KEY,
+    Name CHAR(15) NOT NULL,
+    Surname CHAR(25) NOT NULL,
+    Specialty CHAR(25),
+    Seniority INT,
+    Salary INT,
+    Age INT);
+
+
+INSERT INTO `db_geekbrains`.`Employee` (`Id`, `Name`, `Surname`, `Specialty`, `Seniority`, `Salary`, `Age`) VALUES (1, 'Вася', 'Васькин', 'начальник', 40, 100000, 60);
+INSERT INTO `db_geekbrains`.`Employee` (`Id`, `Name`, `Surname`, `Specialty`, `Seniority`, `Salary`, `Age`) VALUES (2, 'Петя', 'Петькин', 'начальник', 8, 70000, 30);
+INSERT INTO `db_geekbrains`.`Employee` (`Id`, `Name`, `Surname`, `Specialty`, `Seniority`, `Salary`, `Age`) VALUES (3, 'Катя', 'Катькина', 'инженер', 2, 70000, 25);
+INSERT INTO `db_geekbrains`.`Employee` (`Id`, `Name`, `Surname`, `Specialty`, `Seniority`, `Salary`, `Age`) VALUES (4, 'Саша', 'Сашкин', 'инженер', 12, 50000, 35);
+INSERT INTO `db_geekbrains`.`Employee` (`Id`, `Name`, `Surname`, `Specialty`, `Seniority`, `Salary`, `Age`) VALUES (5, 'Иван', 'Иванов', 'рабочий', 40, 30000, 59);
+INSERT INTO `db_geekbrains`.`Employee` (`Id`, `Name`, `Surname`, `Specialty`, `Seniority`, `Salary`, `Age`) VALUES (6, 'Петр', 'Петров', 'рабочий', 20, 25000, 40);
+INSERT INTO `db_geekbrains`.`Employee` (`Id`, `Name`, `Surname`, `Specialty`, `Seniority`, `Salary`, `Age`) VALUES (7, 'Сидор', 'Сидоров', 'рабочий', 10, 20000, 35);
+INSERT INTO `db_geekbrains`.`Employee` (`Id`, `Name`, `Surname`, `Specialty`, `Seniority`, `Salary`, `Age`) VALUES (8, 'Антон', 'Антонов', 'рабочий', 8, 19000, 28);
+INSERT INTO `db_geekbrains`.`Employee` (`Id`, `Name`, `Surname`, `Specialty`, `Seniority`, `Salary`, `Age`) VALUES (9, 'Юра', 'Юркин', 'рабочий', 5, 15000, 25);
+INSERT INTO `db_geekbrains`.`Employee` (`Id`, `Name`, `Surname`, `Specialty`, `Seniority`, `Salary`, `Age`) VALUES (10, 'Максим', 'Воронин', 'рабочий', 2, 11000, 22);
+INSERT INTO `db_geekbrains`.`Employee` (`Id`, `Name`, `Surname`, `Specialty`, `Seniority`, `Salary`, `Age`) VALUES (11, 'Юра', 'Галкин', 'рабочий', 3, 12000, 24);
+INSERT INTO `db_geekbrains`.`Employee` (`Id`, `Name`, `Surname`, `Specialty`, `Seniority`, `Salary`, `Age`) VALUES (12, 'Люся', 'Люськина', 'уборщик', 10, 10000, 60);
