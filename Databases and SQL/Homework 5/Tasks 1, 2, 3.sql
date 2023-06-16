@@ -1,4 +1,4 @@
-create table Cars
+Create table Cars
 (
     Id    int auto_increment primary key,
     Name varchar(255) not null,

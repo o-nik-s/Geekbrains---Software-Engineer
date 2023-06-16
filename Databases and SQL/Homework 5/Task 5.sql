@@ -1,6 +1,6 @@
 -- 5. Добавьте новый столбец под названием «время до следующей станции». 
 
-create table Stations
+CREATE TABLE Stations
 (
     train_id int,
     station varchar(20) not null,
