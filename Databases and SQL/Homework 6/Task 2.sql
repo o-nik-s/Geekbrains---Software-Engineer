@@ -5,8 +5,8 @@ CREATE PROCEDURE print_even (IN max_value INT)
 BEGIN 
     DECLARE i INT DEFAULT 1;
     DECLARE res VARCHAR(100) DEFAULT "";
-    WHILE i <= max_value DO 
-		IF mod(i, 2) = 0 then SET res = CONCAT(res, ' ', i); end if; 
+    WHILE i <= max_value DO
+		IF mod(i, 2) = 0 THEN SET res = CONCAT(res, ' ', i); END IF; 
         SET i = i + 1; 
     END WHILE;
     SELECT res;
