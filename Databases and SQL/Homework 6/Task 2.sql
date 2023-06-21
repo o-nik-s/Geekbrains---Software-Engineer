@@ -1,5 +1,7 @@
 -- 2. Выведите только четные числа от 1 до 10. Пример: 2,4,6,8,10 
+
 Drop procedure if exists print_even;
+
 DELIMITER // 
 CREATE PROCEDURE print_even (IN max_value INT) 
 BEGIN 
