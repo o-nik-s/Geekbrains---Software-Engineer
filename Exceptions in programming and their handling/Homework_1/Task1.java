@@ -13,10 +13,11 @@ public class Task1 {
         Scanner scanner = new Scanner(System.in);
         float number1 = scanner.nextFloat();
         float number2 = scanner.nextFloat();
-        if (number2 == 0) {
-            throw new ArithmeticException("Деление на ноль недопустимо");
-        } else {
+        try {
             System.out.println(number1 + " / " + number2 + " = " + number1/number2);
+        } catch (ArithmeticException e) {
+            System.out.println("Деление на ноль недопустимо");
         }
+        scanner.nextLine();
     }
 }

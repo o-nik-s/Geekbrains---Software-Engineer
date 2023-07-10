@@ -1,7 +1,6 @@
 package Homework1;
 
-import Homework2.InvalidNumberException;
-
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /*
@@ -14,15 +13,16 @@ public class Task2 {
     public static void main(String[] args) {
         System.out.println("Введите возраст:");
         Scanner scanner = new Scanner(System.in);
-        if (scanner.hasNextInt()) {
+        try {
             int age = scanner.nextInt();
             if (age>=0 & age<=120) {
                 System.out.println("Возраст: " + age);
             } else {
                 System.out.println("Возраст вне допустимого диапазона");
             }
-        } else {
+        } catch (NumberFormatException | InputMismatchException e) {
             throw new NumberFormatException("Некорректный ввод");
         }
+        scanner.nextLine();
     }
 }
