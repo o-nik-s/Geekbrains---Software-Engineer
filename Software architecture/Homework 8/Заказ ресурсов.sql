@@ -1,0 +1,6 @@
+ALTER TABLE `Order` DROP FOREIGN KEY `Order_fk0`;
+
+ALTER TABLE `Order` DROP FOREIGN KEY `Order_fk1`;
+
+ALTER TABLE `VirtMachine` DROP FOREIGN KEY `VirtMachine_fk0`;
+
