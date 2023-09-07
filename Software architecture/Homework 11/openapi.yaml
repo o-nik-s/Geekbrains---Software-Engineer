@@ -1,0 +1,658 @@
+openapi: 3.0.3
+info:
+  title: Robot service 3.0
+  description: |-
+    API сервис управления роботом - пылесосом.
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+servers:
+  - url: https://localhost:9669
+tags:
+  - name: User
+    description: Контроллер пользователя.
+  - name: Schedule
+    description: Контроллер расписания.
+  - name: Group
+    description: Контроллер группы.
+  - name: Robot
+    description: Контроллер робота.
+    
+paths:
+  /User:      
+    post:
+      tags:
+        - User
+      summary: Добавить пользователя
+      description: Добавить пользователя в базу
+      operationId: addUser
+      requestBody:
+        description: Создание нового пользователя в базе
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+        '405':
+          description: Invalid input
+  
+  /User/UpdateById/{userId}:
+    put:
+      tags:
+        - User
+      summary: Обновление пользователя
+      description: Обновляет информацию о пользователе
+      operationId: updateUser
+      parameters:
+        - name: userId
+          in: path
+          description: Идентификатор пользователя
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid id supplier
+        '404':
+          description: User not found
+        '405':
+          description: Invalid exception
+    put:
+      tags:
+        - User
+      summary: обновление пользователя
+      description: обновляет нинформацию о пользователе
+      operationId: updateUser
+      parameters:
+        - name: userId
+          in: path
+          description: Идентификатор пользователя
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid id supplier
+        '404':
+          description: User not founde
+        '405':
+          description: Invalid exception
+  /User/findById/{userId}:
+    get:
+      tags:
+        - User
+      summary: Найти пользователя по ID
+      description: вернуть одного пользователя
+      operationId: getUserById
+      parameters:
+        - name: userId
+          in: path
+          description: Идентификатор пользователя
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: User not found
+          
+  /User/deleteById/{userId}:      
+    delete:
+      tags:
+        - User
+      summary: Удаляет пользователя
+      description: Удаляет пользователя
+      operationId: deleteUser
+      parameters:
+        - name: userId
+          in: header
+          description: ''
+          required: false
+          schema:
+            type: string
+        - name: userId
+          in: path
+          description: ID пользователя
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid User value
+        
+  /Group:
+    put:
+      tags:
+        - Group
+      summary: Обновить группу
+      description: Обновить группу
+      operationId: updateGroup
+      requestBody:
+        description: Обновить существующую группу в базе
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Group'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Group'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Group'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Group'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Group not found
+        '405':
+          description: Validation exception
+          
+          
+   
+  /Group/findById/{groupId}:
+    get:
+      tags:
+        - Group
+      summary: Найти группу по ID
+      description: вернуть группу
+      operationId: getGroupById
+      parameters:
+        - name: groupId
+          in: path
+          description: Идентификатор группы
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Group'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Group not found
+          
+  /Group/deleteById/{groupId}:      
+    delete:
+      tags:
+        - Group
+      summary: Удаляет пользователя
+      description: Удаляет пользователя
+      operationId: deleteGroup
+      parameters:
+        - name: groupId
+          in: header
+          description: ''
+          required: false
+          schema:
+            type: string
+        - name: groupId
+          in: path
+          description: ID пользователя
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid Group value
+  /Robot:
+    put:
+      tags:
+        - Robot
+      summary: Обновить робота
+      description: Обновить робота
+      operationId: updateRobot
+      requestBody:
+        description: Обновить существующего робота в базе
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Robot'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Robot'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Robot'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Robot'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Robot'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Robot not found
+        '405':
+          description: Validation exception
+          
+    post:
+      tags:
+        - Robot
+      summary: Добавить робота
+      description: Добавить робота в базу
+      operationId: addRobot
+      requestBody:
+        description: Создание нового робота в базе
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Robot'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Robot'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Robot'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Robot'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Robot'
+        '405':
+          description: Invalid input
+ 
+  /User/deleteById/{robotId}:      
+    delete:
+      tags:
+        - Robot
+      summary: Удаляет робота
+      description: Удаляет робота
+      operationId: deleteRobot
+      parameters:
+        - name: robotId
+          in: header
+          description: ''
+          required: false
+          schema:
+            type: string
+        - name: robotId
+          in: path
+          description: ID робота
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid Robot value
+  /Schedule:
+    put:
+      tags:
+        - Schedule
+      summary: Обновить расписание
+      description: Обновить расписание
+      operationId: updateSchedule
+      requestBody:
+        description: Обновить существующее расписание в базе
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schedule'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Schedule'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Schedule not found
+        '405':
+          description: Validation exception
+          
+    post:
+      tags:
+        - Schedule
+      summary: Добавить расписание
+      description: Добавить расписание в базу
+      operationId: addSchedule
+      requestBody:
+        description: Создать новое расписание в базе
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schedule'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Schedule'
+        '405':
+          description: Invalid input
+  /Schedule/findById/{Id}:
+    get:
+      tags:
+        - Schedule
+      summary: Найти ркасписание по ID
+      description: вернуть одно расписание
+      operationId: getScheduleById
+      parameters:
+        - name: Id
+          in: path
+          description: Идентификатор расписания
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schedule'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Schedule'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Schedule not found
+            
+
+
+   
+components:
+  schemas:
+  
+    User:
+      required:
+        - email
+        - passHash
+        - robotSNHash
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        email:
+          type: string
+          example: somemail@mail.ru
+        passHash:
+          type: integer
+          format: int64
+          example: 23412
+        robotSNHash:
+          type: integer
+          format: int64
+          example: 23412
+      xml:
+        name: pet
+  
+    Group:
+      required:
+        - userId
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        userId:
+          type: integer
+          format: int64
+          example: 10
+      xml:
+        name: Group
+        
+    Schedule:
+      required:
+        - dateTime
+        - mode
+        - robotId
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        dateTime:
+          type: string
+          example: dd.mm.yyyy-hh:mm:ss
+        mode:
+          type: integer
+          format: int64
+          example: 10
+        robotId:
+          type: integer
+          format: int64
+          example: 10
+      xml:
+        name: Schedule
+  
+    Robot:
+      required:
+        - model
+        - version
+        - charge
+        - garbageContainer
+        - robotPollution
+        - nextService
+        - serialNumber
+        - ipAddress
+        - groupId
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        model:
+          type: string
+          example: something
+        version:
+          type: string
+          example: something
+        charge:
+          type: integer
+          format: int64
+          example: 10
+        garbageContainer:
+          type: integer
+          format: int64
+          example: 10
+        robotPollution:
+          type: integer
+          format: int64
+          example: 10
+        nextService:
+          type: integer
+          format: int64
+          example: 10
+        serialNumber:
+          type: string
+          example: something
+        ipAddress:
+          type: integer
+          format: int64
+          example: 10
+        groupId:
+          type: integer
+          format: int64
+          example: 10
+      xml:
+        name: Robot
+  
+  requestBodies:
+  
+    User:
+      description: Данные пользователя
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/User'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/User'
+            
+    UserArray:
+      description: Список пользователей
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/User'
+              
+    Group:
+      description: Данные группы
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Group'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Group'
+            
+    GroupArray:
+      description: Список групп
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Group'
+    
+    Robot:
+      description: Данные группы
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Robot'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Robot'
+            
+    RobotArray:
+      description: Список групп
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Robot'
+              
+    Schedule:
+      description: Данные группы
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Schedule'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Schedule'
+            
+    ScheduleArray:
+      description: Список групп
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Schedule'
