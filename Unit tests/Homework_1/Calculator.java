@@ -1,4 +1,4 @@
-package Homework1;
+package Homework_1;
 
 /**
  * В классе Calculator создайте метод calculateDiscount, который принимает сумму покупки и процент скидки
