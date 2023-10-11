@@ -6,6 +6,7 @@ package Homework1;
  * Если метод calculateDiscount получает недопустимые аргументы, он должен выбрасывать исключение ArithmeticException.
  * Не забудьте написать тесты для проверки этого поведения.
  */
+
 public class Calculator {
     public static double calculateDiscount(double purchaseAmount, int discountPercent) {
         if (purchaseAmount < 0 || discountPercent < 0 || discountPercent > 100) {

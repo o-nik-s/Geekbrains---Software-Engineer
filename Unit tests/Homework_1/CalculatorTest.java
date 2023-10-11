@@ -28,6 +28,9 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
 
         calculator.calculateDiscount(-100, 10);
+        calculator.calculateDiscount(1000, 120);
+        calculator.calculateDiscount(500, -30);
+        calculator.calculateDiscount(250, 40);
     }
 
 }
