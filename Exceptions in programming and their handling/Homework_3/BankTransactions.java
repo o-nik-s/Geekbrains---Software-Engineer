@@ -17,18 +17,8 @@ import java.util.Scanner;
  */
 
 public class BankTransactions {
+
     static double balance = 1000000, otherBalance = 3000000;
-    public static double[] bankTransaction(double balance, double otherBalance, double transferMoney) throws InvalidAmountException, InsufficientFundsException {
-        if (transferMoney <= 0) {
-            throw new InvalidAmountException("Некорректная сумма перевода!");
-        }
-        else if (balance < transferMoney) {
-            throw new InsufficientFundsException("Недостаточно средств на счете!");
-        }
-        balance -= transferMoney;
-        otherBalance += transferMoney;
-        return new double[]{balance, otherBalance};
-    }
 
     public static void main(String[] args) {
 
@@ -49,6 +39,17 @@ public class BankTransactions {
         }
     }
 
+    public static double[] bankTransaction(double balance, double otherBalance, double transferMoney) throws InvalidAmountException, InsufficientFundsException {
+        if (transferMoney <= 0) {
+            throw new InvalidAmountException("Некорректная сумма перевода!");
+        }
+        else if (balance < transferMoney) {
+            throw new InsufficientFundsException("Недостаточно средств на счете!");
+        }
+        balance -= transferMoney;
+        otherBalance += transferMoney;
+        return new double[]{balance, otherBalance};
+    }
     private static double getInputNumber(String prompt) throws InputMismatchException {
         Scanner scanner = new Scanner(System.in);
         System.out.print(prompt);

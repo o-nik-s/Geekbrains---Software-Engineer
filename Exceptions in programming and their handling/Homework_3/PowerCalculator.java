@@ -23,16 +23,6 @@ import static java.lang.Math.pow;
  */
 
 public class PowerCalculator {
-    public static double calculatePower(double a, double b) throws InvalidInputException {
-        if (a == 0) {
-            throw new InvalidInputException("Некорректное основание!");
-        }
-        else if (b < 0) {
-            throw new InvalidInputException("Отрицательная степень!");
-        }
-        return pow(a, b);
-    }
-
     public static void main(String[] args) {
         try {
             double a = getInputNumber("Введите основание: ");
@@ -45,7 +35,15 @@ public class PowerCalculator {
             handleInvalidInputException(e);
         }
     }
-
+    public static double calculatePower(double a, double b) throws InvalidInputException {
+        if (a == 0) {
+            throw new InvalidInputException("Некорректное основание!");
+        }
+        else if (b < 0) {
+            throw new InvalidInputException("Отрицательная степень!");
+        }
+        return pow(a, b);
+    }
     private static double getInputNumber(String prompt) throws InputMismatchException {
         Scanner scanner = new Scanner(System.in);
         System.out.print(prompt);
