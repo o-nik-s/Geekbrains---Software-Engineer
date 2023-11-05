@@ -37,7 +37,6 @@ public class PowerCalculator {
         try {
             double a = getInputNumber("Введите основание: ");
             double b = getInputNumber("Введите степень: ");
-
             double result = calculatePower(a, b);
             System.out.println("Результат возведения в степень: " + result);
         } catch (InputMismatchException e) {
